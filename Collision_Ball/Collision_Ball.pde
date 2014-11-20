@@ -13,7 +13,7 @@ void setup() {
     sz[i] = random(3, 9);
     x[i] = new PVector(random(sz[i], width-sz[i]), random(sz[i], height-sz[i]));
     v[i] = (PVector.random2D());
-    a[i] = new PVector(0, 0);
+    a[i] = new PVector(2, 2);
     colors[i] = random(0, 360);
   }
 
