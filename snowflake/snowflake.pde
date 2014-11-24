@@ -3,9 +3,11 @@ PVector[] x = new PVector[number];
 PVector[] v = new PVector[number];
 PVector[] a = new PVector[number];
 float[] sz = new float[number];
+PImage snowflake;
 
 
 void setup() {
+  snowflake = loadImage("snowflake.png");
   size(displayWidth, displayHeight);
   for (int i=0; i<number; i++) {
     sz[i] = random(1, 2);
@@ -22,7 +24,7 @@ void draw() {
   for (int i=0; i<number; i++) {
     v[i].add(a[i]);
     x[i].add(v[i]);
-    ellipse(x[i].x, x[i].y, sz[i], sz[i]);
+    image(snowflake, x[i].x, x[i].y, snowflake.width*.05, snowflake.height*.05);
     a[i].x=random(-.1, .1);
     if (x[i].y>height) {
       x[i].y = -100;
