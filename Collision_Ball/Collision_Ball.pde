@@ -4,45 +4,48 @@ PVector[] v = new PVector[number];
 PVector[] a = new PVector[number];
 float[] sz = new float[number];
 float[] colors = new float[number];
+float[] mass = new float[number];
+float minsz = 3;
+float maxsz = 9;
 
 
 void setup() {
   size(displayWidth, displayHeight);
-noStroke();
+  noStroke();
   for (int i=0; i<number; i++) {
-    sz[i] = random(3, 9);
+    sz[i] = random(minsz, maxsz);
     x[i] = new PVector(random(sz[i], width-sz[i]), random(sz[i], height-sz[i]));
     v[i] = (PVector.random2D());
-    a[i] = new PVector(1, 1);
+    a[i] = new PVector(0, .1);
     colors[i] = random(0, 360);
+    mass[i] = map(sz[i], minsz, maxsz, 10, 1);
   }
 
   colorMode(HSB, 360, 100, 100, 100);
 }
 
 void draw() {
-
+  background(0);
   for (int i=0; i<number; i++) {
     v[i].add(a[i]);
+    if(v[i].x>0){
+      v[i].x-=.05;
+    }
+    else{
+     v[i].x+=.05; 
+    }
+    if(v[i].y>0){
+      v[i].y-=.05;
+    }
+    else{
+     v[i].y+=.05; 
+    }
     x[i].add(v[i]);
-
     for (int j = 0; j<number; j++) {
       if (i!=j) {
         if (x[i].dist(x[j])< sz[i]/2 + sz[j]/2) {
-          if (x[i].x<x[j].x) {
-            v[i].x = -abs(v[i].x);
-            v[j].x = abs(v[j].x);
-          } else {
-            v[i].x = abs(v[i].x);
-            v[j].x = -abs(v[j].x);
-          }
-          if (x[i].y<x[j].y) {
-            v[i].y = -abs(v[i].y);
-            v[j].y = abs(v[j].y);
-          } else {
-            v[i].y = abs(v[i].y);
-            v[j].y = -abs(v[j].y);
-          }
+          v[i] = PVector.sub(x[i], x[j]);
+          v[i].setMag(mass[i]);
         }
       }
     }
