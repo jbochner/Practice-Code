@@ -1,14 +1,17 @@
-int number=10000;
+int number=100;
 PVector[] x = new PVector[number];
 PVector[] v = new PVector[number];
 PVector[] a = new PVector[number];
 float[] sz = new float[number];
 PImage snowflake;
+PImage Adel;
 
 
 void setup() {
   snowflake = loadImage("snowflake.png");
-  size(displayWidth, displayHeight);
+  Adel = loadImage("adel.jpg");
+
+  size(Adel.width, Adel.height);
   for (int i=0; i<number; i++) {
     sz[i] = random(1, 2);
     x[i] = new PVector(random(0, width), random(-200, height));
@@ -20,7 +23,7 @@ void setup() {
 }
 
 void draw() {
-  background(0, 0, 25);
+  background(Adel);
   for (int i=0; i<number; i++) {
     v[i].add(a[i]);
     x[i].add(v[i]);
