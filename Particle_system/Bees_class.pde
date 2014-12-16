@@ -1,16 +1,17 @@
 class bees {
   PVector x, v, a;
-  float sz, tempsz, loc, mouseloc;
+  float loc, mouseloc;
+  PImage BEEE;
 
-  bees(float tempsz) {
-    sz = tempsz;
-    x = new PVector (sz/2, random(sz/2, height-sz/2));
-    v = new PVector (.7, 0);
+  bees() {
+    x = new PVector (0, random(50, height-50));
+    v = new PVector (.7, cos(frameCount%PI));
     a = new PVector (0.01, 0);
+    BEEE = loadImage("BEEE.png");
   }
 
   void display() {
-    ellipse(x.x, x.y, sz, sz);
+    image(BEEE, x.x, x.y, BEEE.width*.2, BEEE.height*.2);
   }
 
   void move() {

@@ -21,6 +21,6 @@ void draw() {
 }
 
 void mousePressed() {
-  beeMeUp.add(new bees(15));
+  beeMeUp.add(new bees());
 }
 
