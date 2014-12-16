@@ -8,7 +8,9 @@ void setup() {
 }
 
 void draw() {
-  balls.add(new Ball(20, 2)); 
+  if (mousePressed && frameCount%10==1) {
+    balls.add(new Ball(20, 2));
+  }
   background(100, 100, 100);
   fill(340, 100, 100, 80);
   for (int i = 0; i<balls.size (); i++) {
@@ -23,8 +25,8 @@ void draw() {
       }
     }
   }
-  if(balls.size()>number){
-   balls.remove(0); 
+
+  if (keyPressed && balls.size()>0 && frameCount%10==1) {
+    balls.remove(0);
   }
 }
-
