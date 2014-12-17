@@ -9,7 +9,7 @@ void setup() {
 }
 
 void draw() {
-  background(250,60,65);
+  background(250, 60, 65);
   for (int i = 0; i<beeMeUp.size (); i++) {
     bees b = beeMeUp.get(i);
     b.display();
@@ -20,7 +20,10 @@ void draw() {
   }
 }
 
+
 void mousePressed() {
-  beeMeUp.add(new bees());
+  for (int i = 0; i<random (0, 3); i++) {
+    beeMeUp.add(new bees());
+  }
 }
 
