@@ -24,7 +24,7 @@ void setup() {
 void draw() {
   background(250, 60, 65);
   //Create text to aid the user in controlling the program
-  text("Click the mouse to add bees. Press any key to create a swarm. Bees will die if they go past the right side of the screen.", 20, 40);
+  text("Click the mouse to add bees. Hold any key to create a swarm that will follow the mouse. Bees will die if they go past the right side of the screen.", 20, 40);
   text(" Bees do not like having their swarms interrupted, so do not try to add more bees while the bees are swarming.", 13, 70);
     //Set of methods for the bees class
     for (int i = 0; i<beeMeUp.size (); i++) {
@@ -40,9 +40,9 @@ void draw() {
     }
 }
 
-//When the mouse is pressed, create a random amount (1-3) of bees
+//When the mouse is pressed, create a random amount (1-5) of bees
 void mousePressed() {
-  for (int i = 0; i<random (0, 3); i++) {
+  for (int i = 0; i<random (1, 6); i++) {
     beeMeUp.add(new bees());
   }
 }

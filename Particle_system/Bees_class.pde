@@ -4,13 +4,12 @@ class bees {
   PVector x, v, a;
   //Declare the image BEEE
   PImage BEEE;
-  //Declare variables to aid in time controlled mechanisms
+  //Declare variable to aid in time controlled mechanisms
   float timeReleased;
-  float timeSwarm;
   //Declare variable to aid in control of bees' movements
   float periodController;
 
-//Constructor
+  //Constructor
   bees() {
     //The bees are placed on the left side of the screen
     x = new PVector (random(-20, -10), random(50, height-50));
@@ -32,15 +31,13 @@ class bees {
   void move() {
     //If any key is pressed
     if (keyPressed) {
-      //Assign timeSwarm the value of the frameCount when the key is pressed
-      timeSwarm = frameCount;
       //Give the bees an acceleration towards the mouse
       a.set(-(x.x-mouseX)/7000, -(x.y-mouseY)/7000);
     } 
     //If keys are not pressed
     else {
       /*Give the bees a velocity each frame dependent on their
-      periodController and the elapsed time since released */
+       periodController and the elapsed time since released */
       v = new PVector (.7, random(1.5, 3)*cos(periodController*(frameCount-timeReleased)));
     }
     //Add the acceleration to the velocity
